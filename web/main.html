@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="/fav.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
+<input id="location" type="text" placeholder="type any city or country" required / value="Taganrog, Russia">
 
+<button id="show">Get Weather</button>
+
+
+<div id="info">
+
+</div>
+<script type="text/javascript">
+    async function display_weather() {
+        let place = document.getElementById('location').value;
+
+        let res = await eel.get_weather(place)();
+        document.getElementById('info').innerHTML = res;
+    }
+
+    jQuery('#show').on('click', function () {
+        display_weather();
+    });
+</script>
 </body>
 </html>
